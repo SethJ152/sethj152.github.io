@@ -14,9 +14,10 @@
       --bg:#071021;
       --card:#0b1220;
       --muted:#9aa6b2;
-      --accent:#7dd3fc;
-      --accent-2:#ffd166;
+      --green-1: #23a55a;   /* primary green */
+      --green-2: #16a34a;   /* darker green */
       --radius:14px;
+      --focus: 3px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -24,7 +25,7 @@
       margin:0;
       font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
       background:
-        radial-gradient(circle at 10% 10%, rgba(125,211,252,0.03), transparent 15%),
+        radial-gradient(circle at 10% 10%, rgba(35,165,90,0.03), transparent 15%),
         linear-gradient(180deg, var(--bg) 0%, #04101a 100%);
       color:#e6eef6;
       display:flex;
@@ -52,6 +53,7 @@
 
     .author strong { color:#fff; font-weight:700; }
 
+    /* Anchor styled as a button */
     .btn {
       display:inline-flex;
       align-items:center;
@@ -62,16 +64,33 @@
       text-decoration:none;
       border:0;
       cursor:pointer;
-      transition:transform .12s ease, box-shadow .12s ease;
+      transition:transform .08s ease, box-shadow .12s ease;
+      outline: none;
+      user-select:none;
     }
 
+    /* GREEN PRIMARY BUTTON */
     .btn.primary{
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color:#042028;
-      box-shadow: 0 10px 28px rgba(125,211,252,0.10);
+      background: linear-gradient(180deg, var(--green-1), var(--green-2));
+      color: #ffffff;
+      box-shadow: 0 8px 22px rgba(22,163,74,0.18);
     }
 
-    .btn.primary:active{ transform:translateY(1px) }
+    .btn.primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(22,163,74,0.22);
+    }
+
+    .btn.primary:active{
+      transform: translateY(1px);
+    }
+
+    /* keyboard focus visible */
+    .btn.primary:focus-visible{
+      box-shadow: 0 0 0 var(--focus) rgba(34,139,76,0.18), 0 12px 30px rgba(22,163,74,0.22);
+      outline: none;
+      border-radius:12px;
+    }
 
     .small-note {
       margin-top:12px;
@@ -86,15 +105,16 @@
 </head>
 <body>
   <main class="card" role="main" aria-label="SDJ Classroom landing">
-    <div class="author" aria-hidden="false">By <strong>OneHotDog1993</strong></div>
+    <div class="author">By <strong>OneHotDog1993</strong></div>
 
+    <!-- Anchor is the link; it's styled as a green button. No invalid role attr. -->
     <a
       class="btn primary"
       href="https://sdjclassroom.github.io"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Open SDJ Classroom in a new tab"
-      role="link"
+      title="Open SDJ Classroom (new tab)"
     >
       ▶ Go to SDJ Classroom
     </a>
