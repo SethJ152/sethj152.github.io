@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SDJ Classroom Landing Page</title>
-  
-  <!-- Favicon -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SDJ Classroom</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  
-  <!-- Metadata for educational purpose -->
-  <meta name="description" content="SDJ Classroom Landing Page - Access interactive coding and computer science lessons.">
-  <meta name="keywords" content="education, learning, coding, computer science, interactive lessons, student exercises">
-  <meta name="audience" content="students, educators">
-  <meta name="subject" content="computer science, programming, STEM, interactive learning">
+  <meta name="description" content="SDJ Classroom — free, interactive coding and computer-science lessons." />
+  <meta name="author" content="OneHotDog1993" />
 
-  <!-- Simple CSS for clean layout -->
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      color: #333;
+    :root{
+      --bg:#071021;
+      --card:#0b1220;
+      --muted:#9aa6b2;
+      --accent:#7dd3fc;
+      --accent-2:#ffd166;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(125,211,252,0.03), transparent 15%),
+        linear-gradient(180deg, var(--bg) 0%, #04101a 100%);
+      color:#e6eef6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
     }
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      max-width: 400px;
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:var(--radius);
+      padding:22px 28px;
+      max-width:460px;
+      width:100%;
+      text-align:center;
+      box-shadow: 0 10px 36px rgba(0,0,0,0.6);
     }
 
-    img.logo {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
+    .author {
+      font-size:0.95rem;
+      color:var(--muted);
+      margin-bottom:14px;
     }
 
-    h1 {
-      margin: 0 0 10px 0;
-      font-size: 1.8em;
+    .author strong { color:#fff; font-weight:700; }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      border:0;
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .12s ease;
     }
 
-    p {
-      margin: 0 0 20px 0;
-      color: #555;
+    .btn.primary{
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color:#042028;
+      box-shadow: 0 10px 28px rgba(125,211,252,0.10);
     }
 
-    a.button {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 15px;
-      background-color: #2c7a7b;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s;
+    .btn.primary:active{ transform:translateY(1px) }
+
+    .small-note {
+      margin-top:12px;
+      font-size:0.8rem;
+      color:var(--muted);
     }
 
-    a.button:hover {
-      background-color: #285e61;
+    @media (max-width:520px){
+      .card{ padding:18px; border-radius:12px }
     }
   </style>
 </head>
 <body>
+  <main class="card" role="main" aria-label="SDJ Classroom landing">
+    <div class="author" aria-hidden="false">By <strong>OneHotDog1993</strong></div>
 
-  <div class="container">
-    <img class="logo" src="assets/favicon.png" alt="SDJ Classroom Logo">
-    <h1>SDJ Classroom</h1>
-    <p>Click the button below to go to the live SDJ Classroom site. Always updated!</p>
-    <a class="button" href="https://sdjclassroom.github.io" target="_blank" rel="noopener noreferrer">Go to SDJ Classroom</a>
-  </div>
+    <a
+      class="btn primary"
+      href="https://sdjclassroom.github.io"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open SDJ Classroom in a new tab"
+      role="link"
+    >
+      ▶ Go to SDJ Classroom
+    </a>
 
+    <div class="small-note" aria-hidden="true">No accounts • Fork-friendly • Free for students</div>
+  </main>
 </body>
 </html>
