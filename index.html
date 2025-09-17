@@ -1,125 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SDJ Classroom</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="description" content="SDJ Classroom — free, interactive coding and computer-science lessons." />
-  <meta name="author" content="OneHotDog1993" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDJ Classroom – Interactive Learning for Students</title>
+  <!-- Favicons and App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <!-- SEO & Educational Metadata -->
+  <meta name="description" content="SDJ Classroom is an educational platform for students and teachers to access interactive coding, STEM, and computer science lessons. Empowering learning through technology.">
+  <meta name="keywords" content="education, classroom, learning, coding, computer science, STEM, interactive, student, teacher, technology, lessons, exercises, school, programming, web app">
+  <meta name="audience" content="students, teachers, educators, schools, parents">
+  <meta name="subject" content="Education, Computer Science, Programming, STEM, Interactive Learning, Technology in Education">
+  <meta name="theme-color" content="#2c7a7b">
+  <meta property="og:title" content="SDJ Classroom – Interactive Learning for Students">
+  <meta property="og:description" content="Access interactive coding, STEM, and computer science lessons. Designed for students, teachers, and schools.">
+  <meta property="og:image" content="assets/android-chrome-512x512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sdjclassroom.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SDJ Classroom – Interactive Learning for Students">
+  <meta name="twitter:description" content="Access interactive coding, STEM, and computer science lessons. Designed for students, teachers, and schools.">
+  <meta name="twitter:image" content="assets/android-chrome-512x512.png">
 
+  <!-- Simple CSS for clean layout -->
   <style>
-    :root{
-      --bg:#071021;
-      --card:#0b1220;
-      --muted:#9aa6b2;
-      --green-1: #23a55a;   /* primary green */
-      --green-2: #16a34a;   /* darker green */
-      --radius:14px;
-      --focus: 3px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(35,165,90,0.03), transparent 15%),
-        linear-gradient(180deg, var(--bg) 0%, #04101a 100%);
-      color:#e6eef6;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('assets/background.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #333;
     }
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      border-radius:var(--radius);
-      padding:22px 28px;
-      max-width:460px;
-      width:100%;
-      text-align:center;
-      box-shadow: 0 10px 36px rgba(0,0,0,0.6);
+    .container {
+      background: rgba(30, 30, 30, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      max-width: 400px;
+      color: #f3f3f3;
     }
 
-    .author {
-      font-size:0.95rem;
-      color:var(--muted);
-      margin-bottom:14px;
+    img.logo {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
     }
 
-    .author strong { color:#fff; font-weight:700; }
-
-    /* Anchor styled as a button */
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:800;
-      text-decoration:none;
-      border:0;
-      cursor:pointer;
-      transition:transform .08s ease, box-shadow .12s ease;
-      outline: none;
-      user-select:none;
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8em;
     }
 
-    /* GREEN PRIMARY BUTTON */
-    .btn.primary{
-      background: linear-gradient(180deg, var(--green-1), var(--green-2));
-      color: #ffffff;
-      box-shadow: 0 8px 22px rgba(22,163,74,0.18);
+    p {
+      margin: 0 0 20px 0;
+      color: #e0e0e0;
     }
 
-    .btn.primary:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(22,163,74,0.22);
+    a.button {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 15px;
+      background-color: #22c55e;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(34,197,94,0.15);
     }
 
-    .btn.primary:active{
-      transform: translateY(1px);
-    }
-
-    /* keyboard focus visible */
-    .btn.primary:focus-visible{
-      box-shadow: 0 0 0 var(--focus) rgba(34,139,76,0.18), 0 12px 30px rgba(22,163,74,0.22);
-      outline: none;
-      border-radius:12px;
-    }
-
-    .small-note {
-      margin-top:12px;
-      font-size:0.8rem;
-      color:var(--muted);
-    }
-
-    @media (max-width:520px){
-      .card{ padding:18px; border-radius:12px }
+    a.button:hover {
+      background-color: #16a34a;
     }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-label="SDJ Classroom landing">
-    <div class="author">By <strong>OneHotDog1993</strong></div>
 
-    <!-- Anchor is the link; it's styled as a green button. No invalid role attr. -->
-    <a
-      class="btn primary"
-      href="https://sdjclassroom.github.io"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Open SDJ Classroom in a new tab"
-      title="Open SDJ Classroom (new tab)"
-    >
-      ▶ Go to SDJ Classroom
-    </a>
+  <div class="container">
+    <img class="logo" src="assets/android-chrome-192x192.png" alt="SDJ Classroom Logo">
+    <h1>SDJ Classroom</h1>
+    <p>Welcome to SDJ Classroom – your gateway to interactive coding, STEM, and computer science lessons for students and educators.</p>
+    <a class="button" href="https://sdjclassroom.github.io">Go to SDJ Classroom</a>
+  </div>
 
-    <div class="small-note" aria-hidden="true">No accounts • Fork-friendly • Free for students</div>
-  </main>
 </body>
 </html>
