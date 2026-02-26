@@ -162,7 +162,7 @@
 
 <div class="site-banner" role="alert">
   <div class="site-banner__inner">
-    <strong>Notice:</strong> This portal will no longer be active on March 21st, 2026. Please <a href="https://sdjclassroom.github.io" style="color:#fff; text-decoration:underline; font-weight:bold;">bookmark sdjclassroom.github.io</a> for future access.
+    <strong>Notice:</strong> This portal will no longer be active on May 1st, 2026. Please <a href="https://sdjclassroom.github.io" style="color:#fff; text-decoration:underline; font-weight:bold;">bookmark sdjclassroom.github.io</a> for future access.
     <button class="site-banner__close" aria-label="Dismiss banner" onclick="this.closest('.site-banner').style.display='none'">✕</button>
   </div>
 </div>
@@ -197,38 +197,66 @@
   <!-- redirect popup -->
   <div id="redirect-popup">
     <div class="content">
-      <p>Notice: This website portal will no longer be active as of March 21st, 2026. Please bookmark sdjclassroom.github.io for future access.</p>
-      <button id="redirect-ok">I understand</button>
-      <button id="redirect-ok">I dont understand</button>
+      <p>Notice: This website portal will no longer be active as of May 1st, 2026.<br>The main website will remain active and accesible so make sure to bookmark it.</p>
+      <button id="redirect-ok">I understand, continue to site</button>
+      <button id="redirect-explain">What does this mean?</button>
     </div>
   </div>
 
-  <script>
-    // show notice when redirecting via main button using custom red popup
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.querySelector('a.button');
-      var popup = document.getElementById('redirect-popup');
-      var ok = document.getElementById('redirect-ok');
-      if (btn && popup && ok) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          popup.style.display = 'flex';
-          // store target URL
-          popup.dataset.href = this.href;
-        });
-        ok.addEventListener('click', function() {
-          var href = popup.dataset.href;
-          if (href) window.location = href;
-        });
-        // optional: close when clicking outside content
-        popup.addEventListener('click', function(e) {
-          if (e.target === popup) {
-            popup.style.display = 'none';
-          }
-        });
-      }
-    });
-  </script>
+  <!-- explain popup -->
+  <div id="explain-popup">
+    <div class="content">
+      <p>
+        NOTICE:<br><br>
+        The main SDJ Classroom game website will remain active and accessible.<br><br>
+        However, the sdjgames.com portal itself will shut down on May 1st, 2026.<br><br>
+        You will still be able to play and access everything normally through the main website.
+      </p>
+      <button id="explain-close">Close This Window</button>
+    </div>
+  </div>
 
-</body>
-</html>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  var btn = document.querySelector('a.button');
+  var popup = document.getElementById('redirect-popup');
+  var ok = document.getElementById('redirect-ok');
+  var explainBtn = document.getElementById('redirect-explain');
+
+  var explainPopup = document.getElementById('explain-popup');
+  var explainClose = document.getElementById('explain-close');
+
+  if (btn && popup) {
+
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      popup.style.display = 'flex';
+      popup.dataset.href = this.href;
+    });
+
+    ok.addEventListener('click', function() {
+      var href = popup.dataset.href;
+      if (href) window.location = href;
+    });
+
+    explainBtn.addEventListener('click', function() {
+      explainPopup.style.display = 'flex';
+    });
+
+    explainClose.addEventListener('click', function() {
+      explainPopup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) popup.style.display = 'none';
+    });
+
+    explainPopup.addEventListener('click', function(e) {
+      if (e.target === explainPopup) explainPopup.style.display = 'none';
+    });
+
+  }
+
+});
+</script>
