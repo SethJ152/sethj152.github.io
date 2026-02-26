@@ -85,9 +85,87 @@
     a.button:hover {
       background-color: #16a34a;
     }
+
+    /* Banner styles */
+    .site-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 16px;
+      color: #fff;
+      background: linear-gradient(90deg, #ff4d4f, #ff1f1f);
+      animation: flash-red 1s linear infinite;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-weight: 600;
+      text-align: center;
+    }
+    .site-banner__inner { max-width: 980px; width:100%; position: relative; }
+    .site-banner__close {
+      position: absolute;
+      right: 12px;
+      top: 8px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    @keyframes flash-red {
+      0% { background-color: #ff4d4f; }
+      50% { background-color: #ff8888; }
+      100% { background-color: #ff4d4f; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-banner { animation: none; background-color: #ff4d4f; }
+    }
+
+    /* redirect popup styles */
+    #redirect-popup, #explain-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 100001;
+    }
+    #redirect-popup .content, #explain-popup .content {
+      background: #b00;
+      color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      max-width: 90%;
+      text-align: center;
+    }
+    #redirect-popup button, #explain-popup button {
+      margin-top: 12px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background: #fff;
+      color: #b00;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
+<div class="site-banner" role="alert">
+  <div class="site-banner__inner">
+    <strong>Notice:</strong> This portal will no longer be active on March 21st, 2026. Please <a href="https://sdjclassroom.github.io" style="color:#fff; text-decoration:underline; font-weight:bold;">bookmark sdjclassroom.github.io</a> for future access.
+    <button class="site-banner__close" aria-label="Dismiss banner" onclick="this.closest('.site-banner').style.display='none'">✕</button>
+  </div>
+</div>
 
 <div style="position: absolute; z-index: 99999">
       <input autocomplete="off" type="checkbox" id="aadsstickymgiv07p3" hidden />
@@ -115,6 +193,42 @@
     <p>Welcome to SDJ Classroom – your gateway to interactive coding, STEM, and computer science lessons for students and educators.</p>
     <a class="button" href="https://sdjclassroom.github.io">Go to SDJ Classroom</a>
   </div>
+
+  <!-- redirect popup -->
+  <div id="redirect-popup">
+    <div class="content">
+      <p>Notice: This website portal will no longer be active as of March 21st, 2026. Please bookmark sdjclassroom.github.io for future access.</p>
+      <button id="redirect-ok">I understand</button>
+      <button id="redirect-ok">I dont understand</button>
+    </div>
+  </div>
+
+  <script>
+    // show notice when redirecting via main button using custom red popup
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.querySelector('a.button');
+      var popup = document.getElementById('redirect-popup');
+      var ok = document.getElementById('redirect-ok');
+      if (btn && popup && ok) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          popup.style.display = 'flex';
+          // store target URL
+          popup.dataset.href = this.href;
+        });
+        ok.addEventListener('click', function() {
+          var href = popup.dataset.href;
+          if (href) window.location = href;
+        });
+        // optional: close when clicking outside content
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            popup.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
